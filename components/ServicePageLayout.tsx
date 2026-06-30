@@ -48,7 +48,7 @@ export default function ServicePageLayout({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="min-h-screen bg-gray-50 text-gray-800">
       <section className="relative flex w-full items-center justify-center text-white">
         <img
           src={heroImage}
@@ -107,7 +107,7 @@ export default function ServicePageLayout({
                   alt={item.imageAlt}
                   className="mb-3 h-40 w-full rounded-lg object-cover sm:mb-4 sm:h-48"
                 />
-                <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                <h3 className="mb-2 text-lg font-semibold text-gray-900 sm:text-xl">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-600 sm:text-base">
