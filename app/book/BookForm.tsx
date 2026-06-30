@@ -353,7 +353,7 @@ export default function BookForm() {
           value={area}
           onChange={setArea}
           placeholder="Type to search area…"
-          hint={`Example: Adyar, Anna Nagar, Velachery — ${Kathmandu_AREAS.length} areas in Kathmandu`}
+          hint={`Example: Thamel, Baneshwor, Patan — ${Kathmandu_AREAS.length} areas in Kathmandu Valley`}
         />
 
         <div className="flex flex-col gap-1">
