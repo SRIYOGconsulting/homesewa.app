@@ -1,10 +1,15 @@
 import Link from "next/link";
+import {
+  bookUrlForServiceSlug,
+  serviceSlugFromHref,
+} from "@/lib/service-booking-map";
 
 type ServiceCardProps = {
   image: string;
   title: string;
   desc: string;
   href?: string;
+  serviceSlug?: string;
   showBook?: boolean;
   showLearnMore?: boolean;
   bookButtonVariant?: "filled" | "outline";
@@ -15,10 +20,13 @@ export default function ServiceCard({
   title,
   desc,
   href,
+  serviceSlug,
   showBook = true,
   showLearnMore = true,
   bookButtonVariant = "filled",
 }: ServiceCardProps) {
+  const resolvedSlug = serviceSlug ?? serviceSlugFromHref(href);
+  const bookHref = resolvedSlug ? bookUrlForServiceSlug(resolvedSlug) : "/book";
   const bookButtonClass =
     bookButtonVariant === "outline"
       ? "px-4 py-1 text-teal-700 border border-teal-700 rounded-full bg-white text-sm font-semibold transition-transform duration-200 hover:scale-105"
@@ -57,7 +65,7 @@ export default function ServiceCard({
                 Learn More
               </Link>
             )}
-            <Link href="/book" className={bookButtonClass}>
+            <Link href={bookHref} className={bookButtonClass}>
               Book a Service
             </Link>
           </div>
@@ -66,7 +74,7 @@ export default function ServiceCard({
 
       {showBook && !showLearnMore && (
         <div className="pb-6 flex justify-center">
-          <Link href="/book" className={`mt-4 ${bookButtonClass}`}>
+          <Link href={bookHref} className={`mt-4 ${bookButtonClass}`}>
             Book a Service
           </Link>
         </div>

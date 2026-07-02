@@ -110,8 +110,8 @@ const PrivacyPolicy = () => {
               Transfer of Data
             </h2>
             <p className="about leading-relaxed">
-              Your personal data may be transferred to servers located in Nepal, 
-              USA, or Nepal. By using our Service, you consent to this transfer. 
+              Your personal data may be transferred to servers located in Nepal. 
+              By using our Service, you consent to this transfer. 
               We take reasonable steps to ensure your data is secure.
             </p>
           </div>

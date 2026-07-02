@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import { bookUrlForServiceSlug } from "@/lib/service-booking-map";
 
 export type ServiceFaq = {
   id: number;
@@ -18,6 +19,7 @@ export type ServiceScopeItem = {
 
 type ServicePageLayoutProps = {
   serviceName: string;
+  serviceSlug?: string;
   heroImage: string;
   heroTitle: string;
   heroDescription: string;
@@ -31,6 +33,7 @@ type ServicePageLayoutProps = {
 
 export default function ServicePageLayout({
   serviceName,
+  serviceSlug,
   heroImage,
   heroTitle,
   heroDescription,
@@ -67,7 +70,7 @@ export default function ServicePageLayout({
           <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-white sm:text-base md:text-lg">
             {heroDescription}
           </p>
-          <Link href="/book">
+          <Link href={serviceSlug ? bookUrlForServiceSlug(serviceSlug) : "/book"}>
             <button className="rounded-lg bg-[#0E4541] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-900 sm:px-6 sm:py-3 sm:text-base">
               {bookLabel}
             </button>

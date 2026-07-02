@@ -34,6 +34,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   return (
     <ServicePageLayout
       serviceName={service.title}
+      serviceSlug={slug}
       heroImage={service.image}
       heroTitle={service.heroTitle}
       heroDescription={service.heroDescription}

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import FormPageLayout from "../../components/FormPageLayout";
 import BookForm from "./BookForm";
 
@@ -13,7 +14,9 @@ export default function BookPage() {
       breadcrumb="Book"
       title="Book a Service with HomeSewa"
     >
-      <BookForm />
+      <Suspense fallback={null}>
+        <BookForm />
+      </Suspense>
     </FormPageLayout>
   );
 }

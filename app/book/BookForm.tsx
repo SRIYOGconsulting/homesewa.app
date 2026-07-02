@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   BOOKING_CITY,
   BOOKING_PRIORITIES,
@@ -15,6 +16,7 @@ import {
   getAvailableShifts,
   getBookingToday,
 } from "@/lib/booking-datetime";
+import { resolveBookingService } from "@/lib/service-booking-map";
 
 const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 
@@ -296,6 +298,8 @@ function ClearFormDialog({
 
 export default function BookForm() {
   const formId = useId();
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams.get("service");
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -318,6 +322,13 @@ export default function BookForm() {
   const availableShifts = startDate
     ? getAvailableShifts(startDate)
     : BOOKING_SHIFTS;
+
+  useEffect(() => {
+    const resolved = resolveBookingService(serviceParam);
+    if (resolved) {
+      setSelectedService(resolved);
+    }
+  }, [serviceParam]);
 
   useEffect(() => {
     if (startDate && shift && !getAvailableShifts(startDate).includes(shift)) {

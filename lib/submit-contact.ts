@@ -164,10 +164,18 @@ function validatePayload(payload: ContactPayload): string | null {
     return "Name must be at least 2 characters.";
   }
 
+  if (!payload.email) {
+    return "Email is required.";
+  }
+
   const emailErr = emailValidationError(payload.email);
   if (emailErr) return emailErr;
 
-  if (payload.phone && !/^\d{7,15}$/.test(payload.phone.replace(/\s/g, ""))) {
+  if (!payload.phone) {
+    return "Phone number is required.";
+  }
+
+  if (!/^\d{7,15}$/.test(payload.phone.replace(/\s/g, ""))) {
     return "Phone must be 7-15 digits (numbers only).";
   }
 

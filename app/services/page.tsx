@@ -28,6 +28,7 @@ export default function ServicesPage() {
                     title={service.title}
                     desc={service.desc}
                     href={`/services/${service.slug}`}
+                    serviceSlug={service.slug}
                     showLearnMore={true}
                     bookButtonVariant="outline"
                   />
